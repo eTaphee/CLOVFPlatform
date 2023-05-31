@@ -17,8 +17,20 @@
 
   <ItemGroup>
     <None Remove="Models\" />
+    <None Remove="Samples\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Samples\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Samples\Template.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Samples\employee.csv">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 </Project>
