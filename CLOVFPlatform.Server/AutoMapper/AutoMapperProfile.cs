@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CLOVFPlatform.Server.Models;
 using EmployeeDTO = CLOVFPlatform.Server.Services.DTO.Employee;
+using PaginatedLinkDTO = CLOVFPlatform.Server.Services.DTO.PaginatedLink;
 
 namespace CLOVFPlatform.Server.AutoMapper
 {
@@ -10,7 +11,9 @@ namespace CLOVFPlatform.Server.AutoMapper
 		{
 			CreateMap<EmployeeDTO, Employee>();
 			CreateMap<Employee, EmployeeDTO>();
-		}
+
+			CreateMap<PaginatedLink, PaginatedLinkDTO>();
+        }
 	}
 }
 

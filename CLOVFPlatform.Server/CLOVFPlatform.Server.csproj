@@ -24,12 +24,14 @@
     <None Remove="Samples\" />
     <None Remove="Services\DTO\" />
     <None Remove="AutoMapper\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Samples\" />
     <Folder Include="Services\DTO\" />
     <Folder Include="AutoMapper\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Samples\Template.cshtml" />

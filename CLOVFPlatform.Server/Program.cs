@@ -11,6 +11,8 @@ builder.Services.AddTransient<IEmployeeService, EmployeeService>();
 builder.Services.AddTransient<IEmployeeJsonParser, EmployeeJsonParser>();
 builder.Services.AddTransient<IEmployeeCsvParser, EmployeeCsvParser>();
 
+builder.Services.AddHttpContextAccessor();
+
 // routing lowercase
 builder.Services.AddRouting((options) => { options.LowercaseUrls = true; });
 builder.Services.AddControllers();

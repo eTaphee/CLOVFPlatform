@@ -1,11 +1,7 @@
-﻿using System;
+﻿using CLOVFPlatform.Server.Services;
+using CLOVFPlatform.Server.Services.DTO;
 using Microsoft.AspNetCore.Mvc;
-using CLOVFPlatform.Server.Models;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json;
-using Microsoft.EntityFrameworkCore;
-using CLOVFPlatform.Server.Services;
+using EmployeeDTO = CLOVFPlatform.Server.Services.DTO.Employee;
 
 namespace CLOVFPlatform.Server.Controllers
 {
@@ -14,43 +10,42 @@ namespace CLOVFPlatform.Server.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly ILogger<EmployeeController> logger;
-        private readonly CLOVFContext context;
         private readonly IServiceProvider serviceProvider;
         private readonly IEmployeeService employeeService;
 
-        public EmployeeController(ILogger<EmployeeController> logger, CLOVFContext context, IServiceProvider serviceProvider, IEmployeeService employeeService)
+        public EmployeeController(ILogger<EmployeeController> logger, IServiceProvider serviceProvider, IEmployeeService employeeService)
         {
             this.logger = logger;
-            this.context = context;
             this.serviceProvider = serviceProvider;
             this.employeeService = employeeService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Employee>>> GetEmployeeAsync([FromQuery(Name = "page")] int page = 1, [FromQuery(Name = "pageSize")] int pageSize = 1)
+        [Produces("application/json")]
+        public async Task<ActionResult<PaginatedList<EmployeeDTO>>> GetEmployeeAsync([FromQuery(Name = "page")] int page = 1, [FromQuery(Name = "pageSize")] int pageSize = 5)
         {
-            return await context.Employee.ToListAsync();
+            try
+            {
+                page = page <= 0 ? 1 : page;
+                pageSize = pageSize <= 0 ? 1 : pageSize;
+
+                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<Employee>> GetEmployeeAsync(string name)
+        public async Task<ActionResult<EmployeeDTO>> GetEmployeeAsync(string name)
         {   
             return Ok();
         }
 
-        void Test(string A)
-        {
-
-        }
-
-        void Test(int A)
-        {
-
-        }
-
         [HttpPost]
         [Consumes("multipart/form-data", "application/json", "text/csv")]
-        public async Task<ActionResult<Employee>> PostEmployeeAsync(IFormFile? file)
+        public async Task<ActionResult> PostEmployeeAsync(IFormFile? file)
         {
             try
             {
@@ -110,13 +105,6 @@ namespace CLOVFPlatform.Server.Controllers
                 throw;
             }
         }
-
-        //[HttpPost]
-        //[Consumes("text/json")]
-        //public async Task<ActionResult<Employee>> PostEmployeeAsync([FromBody] string body)
-        //{
-        //    return Ok();
-        //}
     }
 }
 
