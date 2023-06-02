@@ -27,8 +27,9 @@ namespace CLOVFPlatform.Server.Services
 		/// </summary>
 		/// <param name="page">페이지 위치</param>
 		/// <param name="pageSize">페이지 크기</param>
+		/// <param name="name">직원 이름 필,</param>
 		/// <returns></returns>
-		Task<PaginatedListDTO> GetEmployeeListAsync(int page = 1, int pageSize = 5);
+		Task<PaginatedListDTO> GetEmployeeListAsync(int page = 1, int pageSize = 5, string? name = null);
 	}
 
 	public class EmployeeService : IEmployeeService
@@ -77,12 +78,23 @@ namespace CLOVFPlatform.Server.Services
 			}
 		}
 
-		public async Task<PaginatedListDTO> GetEmployeeListAsync(int page = 1, int pageSize = 5)
+		public async Task<PaginatedListDTO> GetEmployeeListAsync(int page = 1, int pageSize = 5, string? name = null)
 		{
 			try
 			{
-				var query = context.Employee.OrderBy(m => m.Joined).ThenBy(m => m.Name).Select(m => mapper.Map<EmployeeDTO>(m)).AsQueryable();
-				var list = await PaginatedList<EmployeeDTO>.CreateAsync(query, page, pageSize);
+                page = page <= 0 ? 1 : page;
+                pageSize = pageSize <= 0 ? 1 : pageSize;
+
+				var query = context.Employee.OrderBy(m => m.Joined).ThenBy(m => m.Name).AsQueryable();
+
+				if (!string.IsNullOrWhiteSpace(name))
+				{
+					query = query.Where(m => m.Name == name);
+				}
+
+				var dtoSource = query.Select(m => mapper.Map<EmployeeDTO>(m));
+
+				var list = await PaginatedList<EmployeeDTO>.CreateAsync(dtoSource, page, pageSize);
 				var link = list.GetPaginatedLinks(httpContextAccessor.HttpContext!.Request.getRequestUrl());
 
                 return new PaginatedListDTO

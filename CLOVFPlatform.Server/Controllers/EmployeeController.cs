@@ -26,10 +26,7 @@ namespace CLOVFPlatform.Server.Controllers
         {
             try
             {
-                page = page <= 0 ? 1 : page;
-                pageSize = pageSize <= 0 ? 1 : pageSize;
-
-                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize));
+                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize, null));
             }
             catch (Exception)
             {
@@ -38,9 +35,17 @@ namespace CLOVFPlatform.Server.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<EmployeeDTO>> GetEmployeeAsync(string name)
-        {   
-            return Ok();
+        [Produces("application/json")]
+        public async Task<ActionResult> GetEmployeeAsync(string name, [FromQuery(Name = "page")] int page = 1, [FromQuery(Name = "pageSize")] int pageSize = 5)
+        {
+            try
+            {
+                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize, name));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpPost]
