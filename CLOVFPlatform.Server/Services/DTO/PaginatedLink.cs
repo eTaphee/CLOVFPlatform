@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-
+﻿using Newtonsoft.Json;
 
 namespace CLOVFPlatform.Server.Services.DTO
 {
@@ -13,19 +10,19 @@ namespace CLOVFPlatform.Server.Services.DTO
         /// <summary>
         /// 링크 관계
         /// </summary>
-        [JsonPropertyOrder(0)]
+        [JsonProperty(Order = 0)]
         public string Rel { get; set; }
 
         /// <summary>
         /// 메서드
         /// </summary>
-        [JsonPropertyOrder(1)]
+        [JsonProperty(Order = 1)]
         public string Method { get; set; }
 
         /// <summary>
         /// 링크
         /// </summary>
-        [JsonPropertyOrder(2)]
+        [JsonProperty(Order = 2)]
         public string Link => $"{Path}?page={Page}&pageSize={PageSize}";
 
         /// <summary>

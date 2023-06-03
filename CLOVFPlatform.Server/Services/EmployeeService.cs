@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
+using CLOVFPlatform.Server.Extensions;
 using CLOVFPlatform.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using EmployeeDTO = CLOVFPlatform.Server.Services.DTO.Employee;
-using PaginatedListDTO = CLOVFPlatform.Server.Services.DTO.PaginatedList<CLOVFPlatform.Server.Services.DTO.Employee>;
 using PaginatedLinkDTO = CLOVFPlatform.Server.Services.DTO.PaginatedLink;
-using CLOVFPlatform.Server.Extensions;
+using PaginatedListDTO = CLOVFPlatform.Server.Services.DTO.PaginatedList<CLOVFPlatform.Server.Services.DTO.Employee>;
 
 namespace CLOVFPlatform.Server.Services
 {
-	/// <summary>
-	/// 직원 정보 관리 서비스
-	/// </summary>
-	public interface IEmployeeService
+    /// <summary>
+    /// 직원 정보 관리 서비스
+    /// </summary>
+    public interface IEmployeeService
 	{
 		/// <summary>
 		/// 직원 정보 생성

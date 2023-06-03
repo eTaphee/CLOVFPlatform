@@ -1,6 +1,7 @@
 ﻿using CLOVFPlatform.Server.AutoMapper;
 using CLOVFPlatform.Server.Models;
 using CLOVFPlatform.Server.Services;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +16,11 @@ builder.Services.AddHttpContextAccessor();
 
 // routing lowercase
 builder.Services.AddRouting((options) => { options.LowercaseUrls = true; });
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson((options) => { options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;  });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenNewtonsoftSupport(); // swagger newtonsoft.json 
 
 builder.Services.AddDbContext<CLOVFContext>();
 
