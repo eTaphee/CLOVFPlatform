@@ -50,6 +50,7 @@ namespace CLOVFPlatform.Server.Controllers
 
         [HttpPost]
         [Consumes("multipart/form-data", "application/json", "text/csv")]
+        [Produces("application/json")]
         public async Task<ActionResult> PostEmployeeAsync(IFormFile? file)
         {
             try
@@ -58,11 +59,16 @@ namespace CLOVFPlatform.Server.Controllers
                 string? value = null; // value to parse
                 IEmployeeParser? parser = null;
 
+                if (string.IsNullOrWhiteSpace(Request.ContentType))
+                {
+                    throw new CLOVFPlatformException(400, "Content-Type Required");
+                }
+
                 if (Request.ContentType!.Contains("multipart/form-data"))
                 {
                     if (file == null)
                     {
-                        throw new Exception();
+                        throw new CLOVFPlatformException(400, "Parameter Required", "file parameter required");
                     }
 
                     ext = System.IO.Path.GetExtension(file.FileName.ToLower());
@@ -83,10 +89,14 @@ namespace CLOVFPlatform.Server.Controllers
                 {
                     parser = serviceProvider.GetService<IEmployeeCsvParser>()!;
                 }
+                else
+                {
+                    throw new CLOVFPlatformException(400, "Invalid Format", $"{Request.ContentType} is not supported format");
+                }
 
                 if (parser!.IsValid(value!) == false)
                 {
-                    // throw
+                    throw new CLOVFPlatformException(400, "Invalid Format", "content-type format invalid");
                 }
 
                 var models = parser!.GetEmployee(value!);
@@ -105,7 +115,7 @@ namespace CLOVFPlatform.Server.Controllers
 
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception) 
             {
                 throw;
             }

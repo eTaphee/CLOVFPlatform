@@ -8,12 +8,14 @@ namespace CLOVFPlatform.Server.Controllers
     [Route("[controller]")]
     public class ErrorController : ControllerBase
     {
-        public ErrorController()
+        private readonly IWebHostEnvironment environment;
+
+        public ErrorController(IWebHostEnvironment environment)
         {
-            
+            this.environment = environment;   
         }
 
-        [HttpGet]
+        [HttpGet, HttpPost, HttpPatch, HttpPut, HttpDelete]
         [Produces("application/json")]
         public ActionResult<ErrorMessage> Error()
         {
@@ -37,6 +39,7 @@ namespace CLOVFPlatform.Server.Controllers
                     Status = ex.StatusCode,
                     Message = ex.Message,
                     Detail = ex.Detail,
+                    StackTrace = environment.IsProduction() ? null : error.StackTrace,
                     Path = exceptionHandlerPathFeature.Path
                 });
             }
@@ -47,7 +50,8 @@ namespace CLOVFPlatform.Server.Controllers
                 {
                     Status = 500,
                     Message = error.GetType().Name,
-                    Detail = null,
+                    Detail =  environment.IsProduction() ? null : error.Message,
+                    StackTrace = environment.IsProduction() ? null : error.StackTrace,
                     Path = exceptionHandlerPathFeature.Path
                 });
             }
@@ -73,6 +77,11 @@ namespace CLOVFPlatform.Server.Controllers
         /// 상세 내용
         /// </summary>
         public string? Detail { get; set; }
+
+        /// <summary>
+        /// 스택 트레이스(비 프로덕션 환경)
+        /// </summary>
+        public string? StackTrace { get; set; }
 
         /// <summary>
         /// 요청 경로

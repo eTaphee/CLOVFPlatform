@@ -111,11 +111,6 @@ namespace CLOVFPlatform.Server.Services
 				throw;
 			}
 		}
-
-		public Task<EmployeeDTO> GetEmplyeeAsync()
-		{
-			throw new NotImplementedException();
-		}
 	}
 }
 
