@@ -51,7 +51,7 @@ namespace CLOVFPlatform.Server.Services
 
 				foreach (var model in models)
 				{
-                    var exists = await context.Employee.FirstOrDefaultAsync(m => m.Email.ToLower() == model.Email.ToLower());
+                    var exists = await context.Employee.FirstOrDefaultAsync(m => m.Email!.ToLower() == model.Email!.ToLower());
 					if (exists != null)
 					{
 						Console.WriteLine($"{model.Email} already exists.");

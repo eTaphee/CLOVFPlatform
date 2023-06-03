@@ -12,12 +12,12 @@ namespace CLOVFPlatform.Server.Models
         /// <summary>
         /// 링크 관계
         /// </summary>
-        public string Rel { get; set; }
+        public string? Rel { get; set; }
 
         /// <summary>
         /// 메서드
         /// </summary>
-        public string Method { get; set; }
+        public string? Method { get; set; }
 
         /// <summary>
         /// 링크
@@ -27,7 +27,7 @@ namespace CLOVFPlatform.Server.Models
         /// <summary>
         /// 요청 경로
         /// </summary>
-        public string Path { get; set; }
+        public string? Path { get; set; }
 
         /// <summary>
         /// 현재 페이지 위치

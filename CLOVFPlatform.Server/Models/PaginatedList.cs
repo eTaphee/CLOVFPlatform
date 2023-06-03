@@ -29,16 +29,6 @@ namespace CLOVFPlatform.Server.Models
         /// </summary>
         public int TotalCount { get; set; }
 
-        /// <summary>
-        /// 이전 페이지 여부
-        /// </summary>
-        // public bool HasPreviousPage => Page > 1;
-
-        /// <summary>
-        /// 다음 페이지 여부
-        /// </summary>
-        // public bool HasNextPage => Page < PageCount;
-
         public PaginatedList()
         {
         }

@@ -11,13 +11,13 @@ namespace CLOVFPlatform.Server.Services.DTO
         /// 링크 관계
         /// </summary>
         [JsonProperty(Order = 0)]
-        public string Rel { get; set; }
+        public string? Rel { get; set; }
 
         /// <summary>
         /// 메서드
         /// </summary>
         [JsonProperty(Order = 1)]
-        public string Method { get; set; }
+        public string? Method { get; set; }
 
         /// <summary>
         /// 링크
@@ -29,7 +29,7 @@ namespace CLOVFPlatform.Server.Services.DTO
         /// 요청 경로
         /// </summary>
         [JsonIgnore]
-        public string Path { get; set; }
+        public string? Path { get; set; }
 
         /// <summary>
         /// 현재 페이지 위치

@@ -59,12 +59,12 @@ namespace CLOVFPlatform.Server.Services.DTO
         /// <summary>
         /// 링크
         /// </summary>
-        public IEnumerable<PaginatedLink> Links { get; set; }
+        public IEnumerable<PaginatedLink>? Links { get; set; }
 
         /// <summary>
         /// 항목 목록
         /// </summary>
-        public IEnumerable<T> Items { get; set; }
+        public IEnumerable<T>? Items { get; set; }
 
         public PaginatedList()
 		{
