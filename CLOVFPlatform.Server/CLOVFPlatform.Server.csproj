@@ -29,6 +29,7 @@
     <None Remove="Services\DTO\" />
     <None Remove="AutoMapper\" />
     <None Remove="Extensions\" />
+    <None Remove="Services\DTO\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -36,6 +37,7 @@
     <Folder Include="Services\DTO\" />
     <Folder Include="AutoMapper\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Services\DTO\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Samples\Template.cshtml" />

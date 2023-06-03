@@ -90,9 +90,9 @@ namespace CLOVFPlatform.Server.Services
                 {
                     list.Add(new EmployeeDTO
                     {
-                        Name = csv.GetField<string>(0)!,
-                        Email = csv.GetField<string>(1)!,
-                        Tel = csv.GetField<string>(2)!,
+                        Name = csv.GetField<string>(0)!.Trim(),
+                        Email = csv.GetField<string>(1)!.Trim(),
+                        Tel = csv.GetField<string>(2)!.Trim(),
                         Joined = csv.GetField<DateTime>(3)!
                     });
                 }

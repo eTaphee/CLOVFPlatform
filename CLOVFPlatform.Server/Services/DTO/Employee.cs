@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CLOVFPlatform.Server.Services.DTO
 {
@@ -25,15 +26,66 @@ namespace CLOVFPlatform.Server.Services.DTO
         /// <summary>
         /// 연락처
         /// </summary>
+        [JsonConverter(typeof(EmployeeTelJsonConverter))]
         public string? Tel { get; set; }
 
         /// <summary>
         /// 입사일
         /// </summary>
+        [JsonConverter(typeof(EmployeeJoinedJsonConverter))]
         public DateTime? Joined { get; set; }
 
         public Employee()
         {
+        }
+    }
+
+    public class EmployeeTelJsonConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(string);
+        }
+
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        {
+            if (reader.Value is string value)
+            {
+                return value.Replace("-", string.Empty);
+            }
+
+            return null;
+        }
+
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        {
+            writer.WriteValue(value);
+        }
+    }
+
+    public class EmployeeJoinedJsonConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(string) || objectType == typeof(DateTime);
+        }
+
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        {
+            if (reader.Value is string value)
+            {
+                return DateTime.Parse(value);
+            }
+
+            return DateTime.MinValue;
+        }
+
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        {
+            if (value is DateTime joined)
+            {
+                writer.WriteValue(joined.ToString("yyyy-MM-dd"));
+            }
         }
     }
 }
