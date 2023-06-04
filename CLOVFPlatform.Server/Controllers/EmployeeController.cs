@@ -12,7 +12,7 @@ namespace CLOVFPlatform.Server.Controllers
     /// employee controller
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EmployeeController : ControllerBase
     {
         private readonly ILogger<EmployeeController> logger;
@@ -141,12 +141,12 @@ namespace CLOVFPlatform.Server.Controllers
 
                 if (addedCount > 1)
                 {
-                    return Created("/employee", null);
+                    return Created(Request.Path, added);
                 }
                 else if (addedCount == 1)
                 {
                     var employee = added.First();
-                    return Created($"/employee/{employee.Id}", null);
+                    return Created($"{Request.Path}/{employee.Id}", employee);
                 }
 
                 return NoContent();
