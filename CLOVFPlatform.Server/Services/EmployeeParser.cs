@@ -16,20 +16,6 @@ namespace CLOVFPlatform.Server.Services
     public interface IEmployeeJsonParser : IEmployeeParser { }
     public interface IEmployeeCsvParser : IEmployeeParser { }
     
-
-    public class EmployeeFileParser : IEmployeeFileParser
-    {
-        public bool IsValid(string value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<EmployeeDTO> GetEmployee(string value)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class EmployeeJsonParser : IEmployeeJsonParser
     {
         public bool IsValid(string value)
@@ -49,18 +35,20 @@ namespace CLOVFPlatform.Server.Services
         {
             try
             {
-                if (IsValid(value))
+                if (!IsValid(value))
                 {
-                    var token = JToken.Parse(value);
-                    if (token is JArray)
-                    {
-                        return JsonConvert.DeserializeObject<IEnumerable<EmployeeDTO>>(value)!;
-                    }
-
-                    return new EmployeeDTO[] { JsonConvert.DeserializeObject<EmployeeDTO>(value)! };
+                    return Array.Empty<EmployeeDTO>();
                 }
 
-                return Array.Empty<EmployeeDTO>();
+                var token = JToken.Parse(value);
+
+                if (token is JArray)
+                {
+                    return token.ToObject<IEnumerable<EmployeeDTO>>()!;
+                }
+
+                return new EmployeeDTO[] { token.ToObject<EmployeeDTO>()! };
+                
             }
             catch (Exception)
             {
@@ -71,19 +59,35 @@ namespace CLOVFPlatform.Server.Services
 
 	public class EmployeeCsvParser : IEmployeeCsvParser
 	{
-        public bool IsValid(string value)
+        private CsvReader GetCsvReader(string csvString)
+        {
+            var bytes = System.Text.Encoding.UTF8.GetBytes(csvString);
+            var ms = new MemoryStream(bytes);
+            var sr = new StreamReader(ms);
+            return new CsvReader(sr, System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private bool IsValid(CsvReader reader)
         {
             return true;
+        }
+
+        public bool IsValid(string value)
+        {
+            using var csv = GetCsvReader(value);
+            return IsValid(csv);
         }
 
         public IEnumerable<EmployeeDTO> GetEmployee(string value)
         {
             try
             {
-                var bytes = System.Text.Encoding.UTF8.GetBytes(value);
-                using var ms = new MemoryStream(bytes);
-                using var sr = new StreamReader(ms);
-                using var csv = new CsvReader(sr, System.Globalization.CultureInfo.InvariantCulture);
+                using var csv = GetCsvReader(value);
+                if (!IsValid(csv))
+                {
+                    return Array.Empty<EmployeeDTO>();
+                }
+
                 var list = new List<EmployeeDTO>();
 
                 while (csv.Read())
