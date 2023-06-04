@@ -1,12 +1,17 @@
 ﻿using CLOVFPlatform.Server.AutoMapper;
 using CLOVFPlatform.Server.Models;
 using CLOVFPlatform.Server.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// mediatR
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+
+// automapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 // Add services to the container.

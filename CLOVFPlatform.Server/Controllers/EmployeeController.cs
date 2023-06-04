@@ -1,5 +1,8 @@
-﻿using CLOVFPlatform.Server.Services;
+﻿using CLOVFPlatform.Server.CQRS.Commands;
+using CLOVFPlatform.Server.CQRS.Queries;
+using CLOVFPlatform.Server.Services;
 using CLOVFPlatform.Server.Services.DTO;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeDTO = CLOVFPlatform.Server.Services.DTO.Employee;
 
@@ -14,13 +17,13 @@ namespace CLOVFPlatform.Server.Controllers
     {
         private readonly ILogger<EmployeeController> logger;
         private readonly IServiceProvider serviceProvider;
-        private readonly IEmployeeService employeeService;
+        private readonly IMediator mediator;
 
-        public EmployeeController(ILogger<EmployeeController> logger, IServiceProvider serviceProvider, IEmployeeService employeeService)
+        public EmployeeController(ILogger<EmployeeController> logger, IServiceProvider serviceProvider, IMediator mediator)
         {
             this.logger = logger;
             this.serviceProvider = serviceProvider;
-            this.employeeService = employeeService;
+            this.mediator = mediator;
         }
 
         /// <summary>
@@ -37,7 +40,8 @@ namespace CLOVFPlatform.Server.Controllers
         {
             try
             {
-                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize, null));
+                var query = new GetEmployeesQuery { Page = page, PageSize = pageSize };
+                return Ok(await mediator.Send(query));
             }
             catch (Exception)
             {
@@ -60,7 +64,8 @@ namespace CLOVFPlatform.Server.Controllers
         {
             try
             {
-                return Ok(await employeeService.GetEmployeeListAsync(page, pageSize, name));
+                var query = new GetEmployeesQuery { Page = page, PageSize = pageSize, Name = name };
+                return Ok(await mediator.Send(query));
             }
             catch (Exception)
             {
@@ -130,7 +135,8 @@ namespace CLOVFPlatform.Server.Controllers
                 }
 
                 var models = parser!.GetEmployee(value!);
-                var added = await employeeService.CreateEmployeeAsync(models);
+                var command = new CreateEmployeesCommand { Employees = models };
+                var added = await mediator.Send(command);
                 var addedCount = added.Count();
 
                 if (addedCount > 1)

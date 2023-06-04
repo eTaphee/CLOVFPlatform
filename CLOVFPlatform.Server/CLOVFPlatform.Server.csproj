@@ -21,6 +21,8 @@
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.16" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +32,10 @@
     <None Remove="AutoMapper\" />
     <None Remove="Extensions\" />
     <None Remove="Services\DTO\Converters\" />
+    <None Remove="CQRS\" />
+    <None Remove="CQRS\Commands\" />
+    <None Remove="CQRS\Queries\" />
+    <None Remove="CQRS\Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -38,6 +44,10 @@
     <Folder Include="AutoMapper\" />
     <Folder Include="Extensions\" />
     <Folder Include="Services\DTO\Converters\" />
+    <Folder Include="CQRS\" />
+    <Folder Include="CQRS\Commands\" />
+    <Folder Include="CQRS\Queries\" />
+    <Folder Include="CQRS\Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Samples\Template.cshtml" />
