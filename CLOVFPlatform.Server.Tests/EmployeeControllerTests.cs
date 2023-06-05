@@ -11,16 +11,16 @@ namespace CLOVFPlatform.Server.Tests
     public class EmployeeControllerTests
     {
         static TestWebApplicationFactory factory;
-        const string FILE_VALID_JSON_ARRAY = ".\\Samples\\employee-array.json";
-        const string FILE_VALID_JSON_DUPLICATED_ARRAY = ".\\Samples\\employee-array-dup.json";
-        const string FILE_VALID_JSON_DUPLICATED2_ARRAY = ".\\Samples\\employee-array-dup2.json";
-        const string FILE_VALID_JSON_OBJECT = ".\\Samples\\employee-one.json";
-        const string FILE_INVALID_JSON_ARRAY = ".\\Samples\\employee-array-invalid.json";
+        const string FILE_VALID_JSON_ARRAY = "./Samples/employee-array.json";
+        const string FILE_VALID_JSON_DUPLICATED_ARRAY = "./Samples/employee-array-dup.json";
+        const string FILE_VALID_JSON_DUPLICATED2_ARRAY = "./Samples/employee-array-dup2.json";
+        const string FILE_VALID_JSON_OBJECT = "./Samples/employee-one.json";
+        const string FILE_INVALID_JSON_ARRAY = "./Samples/employee-array-invalid.json";
 
-        const string FILE_VALID_CSV_ARRAY = ".\\Samples\\employee-array.csv";
-        const string FILE_VALID_CSV_DUPLICATED_ARRAY = ".\\Samples\\employee-array-dup.csv";
-        const string FILE_VALID_CSV_DUPLICATED2_ARRAY = ".\\Samples\\employee-array-dup2.csv";
-        const string FILE_VALID_CSV_OBJECT = ".\\Samples\\employee-one.csv";
+        const string FILE_VALID_CSV_ARRAY = "./Samples/employee-array.csv";
+        const string FILE_VALID_CSV_DUPLICATED_ARRAY = "./Samples/employee-array-dup.csv";
+        const string FILE_VALID_CSV_DUPLICATED2_ARRAY = "./Samples/employee-array-dup2.csv";
+        const string FILE_VALID_CSV_OBJECT = "./Samples/employee-one.csv";
 
 
         [TestInitialize]
