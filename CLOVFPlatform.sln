@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1705.6
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLOVFPlatform.Server", "CLOVFPlatform.Server\CLOVFPlatform.Server.csproj", "{7A6C500A-F9E3-462D-B999-828126EEC47A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLOVFPlatform.Server", "CLOVFPlatform.Server\CLOVFPlatform.Server.csproj", "{7A6C500A-F9E3-462D-B999-828126EEC47A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLOVFPlatform.Server.Tests", "CLOVFPlatform.Server.Tests\CLOVFPlatform.Server.Tests.csproj", "{F72E4CAE-E87F-48D2-84B5-C32E50CECA9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7A6C500A-F9E3-462D-B999-828126EEC47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A6C500A-F9E3-462D-B999-828126EEC47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A6C500A-F9E3-462D-B999-828126EEC47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72E4CAE-E87F-48D2-84B5-C32E50CECA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72E4CAE-E87F-48D2-84B5-C32E50CECA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72E4CAE-E87F-48D2-84B5-C32E50CECA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72E4CAE-E87F-48D2-84B5-C32E50CECA9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -116,11 +116,11 @@ namespace CLOVFPlatform.Server.Controllers
                     value = await sr.ReadToEndAsync();
                 }
 
-                if (Request.ContentType == "application/json" || ext == ".json")
+                if (Request.ContentType.Contains("application/json") || ext == ".json")
                 {
                     parser = serviceProvider.GetService<IEmployeeJsonParser>()!;
                 }
-                else if (Request.ContentType == "text/csv" || ext == ".csv")
+                else if (Request.ContentType.Contains("text/csv") || ext == ".csv")
                 {
                     parser = serviceProvider.GetService<IEmployeeCsvParser>()!;
                 }

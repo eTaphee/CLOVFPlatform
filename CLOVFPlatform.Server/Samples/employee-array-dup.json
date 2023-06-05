@@ -1,0 +1,20 @@
+﻿[
+  {
+    "name": "김민수",
+    "email": "kimmins@gmail.com",
+    "tel": "010-1234-5678",
+    "joined": "2020-03-15"
+  },
+  {
+    "name": "박밥디라라",
+    "email": "parkbob@dira.ra",
+    "tel": "010-5454-9292",
+    "joined": "2013-07-01"
+  },
+  {
+    "name": "김밥디라라",
+    "email": "kimbob@dira.ra",
+    "tel": "010-5454-5959",
+    "joined": "2013-07-01"
+  }
+]
