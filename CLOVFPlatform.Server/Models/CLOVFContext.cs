@@ -24,7 +24,8 @@ namespace CLOVFPlatform.Server.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=clovf.db"); // SQLite 데이터베이스 경로 및 파일명 지정
+			// optionsBuilder.UseSqlite("Data Source=clovf.db"); // SQLite 데이터베이스 경로 및 파일명 지정
+			optionsBuilder.UseInMemoryDatabase("db:clovf");
         }
     }
 }
