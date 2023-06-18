@@ -31,7 +31,7 @@ namespace CLOVFPlatform.Server.Tests
 
         #region GET /api/employee
         /// <summary>
-        /// Á÷¿ø Á¤º¸ Á¶È¸
+        /// ì§ì› ì •ë³´ ì¡°íšŒ
         /// </summary>
         /// <returns></returns>
         [DataTestMethod]
@@ -55,14 +55,14 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÀÌ¸§À¸·Î Á÷¿ø Á¤º¸ Á¶È¸(¼º°ø)
+        /// ì´ë¦„ìœ¼ë¡œ ì§ì› ì •ë³´ ì¡°íšŒ(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [DataTestMethod]
-        [DataRow(1, 10, "±è¹Î¼ö")]
-        [DataRow(1, 10, "ÀÌÁöÇö")]
-        [DataRow(1, 10, "¹ÚÁØÈ£")]
-        [DataRow(1, 10, "ÃÖÀºÁö")]
+        [DataRow(1, 10, "ê¹€ë¯¼ìˆ˜")]
+        [DataRow(1, 10, "ì´ì§€í˜„")]
+        [DataRow(1, 10, "ë°•ì¤€í˜¸")]
+        [DataRow(1, 10, "ìµœì€ì§€")]
         public async Task Test_GetEmployeesByName_ShouldReturnOK(int page, int pageSize, string name)
         {
             // action
@@ -79,7 +79,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÀÌ¸§À¸·Î Á÷¿ø Á¤º¸ Á¶È¸(½ÇÆĞ)
+        /// ì´ë¦„ìœ¼ë¡œ ì§ì› ì •ë³´ ì¡°íšŒ(ì‹¤íŒ¨)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -88,7 +88,7 @@ namespace CLOVFPlatform.Server.Tests
             // arrange
             int page = 1;
             int pageSize = 10;
-            string name = "¹Ú¹äµğ¶ó¶ó";
+            string name = "ë°•ë°¥ë””ë¼ë¼";
 
             // action
             var client = factory.CreateClient();
@@ -102,9 +102,9 @@ namespace CLOVFPlatform.Server.Tests
         }
         #endregion
 
-        #region POST /api/employee Å×½ºÆ® Á¶°Ç ¸Å°³º¯¼ö
+        #region POST /api/employee í…ŒìŠ¤íŠ¸ ì¡°ê±´ ë§¤ê°œë³€ìˆ˜
         /// <summary>
-        ///  ÆÄÀÏ·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø)
+        ///  íŒŒì¼ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÆÄÀÏ·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// íŒŒì¼ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -151,7 +151,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÆÄÀÏ·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// íŒŒì¼ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -174,7 +174,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÆÄÀÏ·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ¶§
+        /// íŒŒì¼ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë•Œ
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -199,7 +199,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -224,7 +224,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ¹®ÀÚ¿­·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), 
+        /// ë¬¸ìì—´ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), 
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -247,7 +247,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ¹®ÀÚ¿­·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø),, ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// ë¬¸ìì—´ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ),, ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -271,7 +271,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ¹®ÀÚ¿­·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// ë¬¸ìì—´ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -294,7 +294,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ¹®ÀÚ¿­·Î Á÷¿ø Á¤º¸(¹è¿­) Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ‹š
+        /// ë¬¸ìì—´ë¡œ ì§ì› ì •ë³´(ë°°ì—´) ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë–„
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -319,7 +319,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// ¹®ÀÚ¿­·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// ë¬¸ìì—´ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -346,7 +346,7 @@ namespace CLOVFPlatform.Server.Tests
 
         #region POST /api/employee json
         /// <summary>
-        /// json ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// json íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -366,7 +366,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -387,7 +387,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -407,7 +407,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ‹š
+        /// json íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë–„
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -429,7 +429,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// json string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -449,7 +449,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -470,7 +470,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -490,7 +490,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ‹š
+        /// json string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë–„
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -512,7 +512,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// json íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -534,7 +534,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -555,7 +555,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// json string ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -577,7 +577,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// json string Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), Áßº¹µÈ µ¥ÀÌÅÍ
+        /// json string ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -598,7 +598,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// À¯È¿ÇÏÁö ¾ÊÀº json ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(½ÇÆĞ)
+        /// ìœ íš¨í•˜ì§€ ì•Šì€ json íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì‹¤íŒ¨)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -622,7 +622,7 @@ namespace CLOVFPlatform.Server.Tests
         #region POST /api/employee csv
 
         /// <summary>
-        /// csv ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// csv íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -642,7 +642,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -663,7 +663,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -683,7 +683,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv ÆÄÀÏ(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ‹š
+        /// csv íŒŒì¼(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë–„
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -705,7 +705,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// csv string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -725,7 +725,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ¸ğµÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ëª¨ë‘ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -746,7 +746,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÀÏºÎ Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¼ë¶€ ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -766,7 +766,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string(Á÷¿ø ¹è¿­)·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), ÇÏ³ª¸¸ Ãß°¡µÆÀ» ‹š
+        /// csv string(ì§ì› ë°°ì—´)ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), í•˜ë‚˜ë§Œ ì¶”ê°€ëì„ ë–„
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -788,7 +788,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// csv íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -810,7 +810,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -831,7 +831,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø)
+        /// csv string ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ)
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -853,7 +853,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// csv string Á÷¿ø Á¤º¸ Ãß°¡(¼º°ø), Áßº¹µÈ µ¥ÀÌÅÍ
+        /// csv string ì§ì› ì •ë³´ ì¶”ê°€(ì„±ê³µ), ì¤‘ë³µëœ ë°ì´í„°
         /// </summary>
         /// <returns></returns>
         [TestMethod]
@@ -874,7 +874,7 @@ namespace CLOVFPlatform.Server.Tests
         }
 
         /// <summary>
-        /// À¯È¿ÇÏÁö ¾ÊÀº json ÆÄÀÏ·Î Á÷¿ø Á¤º¸ Ãß°¡(½ÇÆĞ)
+        /// ìœ íš¨í•˜ì§€ ì•Šì€ json íŒŒì¼ë¡œ ì§ì› ì •ë³´ ì¶”ê°€(ì‹¤íŒ¨)
         /// </summary>
         /// <returns></returns>
         //[TestMethod]
